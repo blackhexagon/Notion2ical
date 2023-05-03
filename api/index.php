@@ -11,8 +11,8 @@ use GuzzleHttp\Exception\GuzzleException;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Load the .env
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+//$dotenv->load();
 
 $db = $_GET['db'] ?? null;
 $key = $_GET['k'] ?? null;
