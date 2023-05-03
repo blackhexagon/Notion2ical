@@ -8,7 +8,7 @@ use Eluceo\iCal\Presentation\Factory\CalendarFactory;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // Load the .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
