@@ -14,16 +14,19 @@ require 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-if (!isset($_GET['k']) || $_GET['k'] !== $_ENV['SECRET_KEY']) {
+$db = $_GET['db'] ?? null;
+$key = $_GET['k'] ?? null;
+if (!$db || !$key || $key !== $_ENV['SECRET_KEY']) {
     header('HTTP/1.0 403 Forbidden');
     echo 'access denied';
     exit();
 }
 
+
 // Set up the Notion API call
 $client = new Client();
 try {
-    $response = $client->request('POST', 'https://api.notion.com/v1/databases/' . $_ENV['NOTION_DB_ID'] . '/query', [
+    $response = $client->request('POST', 'https://api.notion.com/v1/databases/' . $db . '/query', [
         'body' => json_encode([
             'page_size' => 100,
             'filter' => [
